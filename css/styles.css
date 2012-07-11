@@ -1,0 +1,116 @@
+html{
+	background: url('../img/bg.gif');
+}
+body{
+	width: 960px;
+	margin: 0 auto;
+	font-family: Georgia, serif;
+}
+#html5{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+}
+h1{
+    font: 60px/68px 'Sansita One', cursive;
+    color: #E85304;
+	text-shadow: 2px 2px 0 #707070;	
+    font-weight: normal;	
+	text-align: center;
+}
+
+h2{	
+    font-size: 20px;
+    color: #D71952;
+}
+
+#error{
+	width: 600px;
+	margin: 0 auto;
+}
+
+#errorImg{
+	float: left;
+	margin-right: 10px;
+}
+#errorMsg{	
+	float: left;
+	width: 300px;
+	height: 111px;
+	font-size: 18px;
+	text-align: center;
+	background: #D71952;
+	color: #FFF;
+	padding: 10px;
+	border-radius: 5px; 
+}
+#search{
+	text-align: center;
+	clear: both;
+}
+#searchTerm{
+	border: 1px solid #CCC; 
+	padding: 16px;
+	font-size: 20px;
+	width: 200px;
+}
+#searchSubmit{
+	padding: 15px;
+	background: #D71952;	font: 20px 'Sansita One', cursive;
+	color: #FFF;
+	border: none;   
+}
+#searchSubmit:hover{
+	background: #B11544;
+}
+#showThumbs{
+	margin: 40px 30px 20px 60px;
+    float: left;
+    display: block;   
+    width: 450px;
+}
+
+#showThumbs ul{
+	list-style-type: none;
+	display: inline;	margin-left: 0;	padding-left: 0;
+}
+#showThumbs li{
+	margin-right: 10px;
+	margin-bottom: 10px;
+	display: block;
+    float: left;
+    margin: 5px;
+}
+
+.thumb {
+	padding: 5px;
+}
+
+.thumb:hover{
+	padding: 0;
+	border: 5px solid #D71952;
+}
+#showPhoto{ 
+	display: none;		
+    margin: 80px 20px 20px 0;
+    background: #FFF;
+    float: left;
+    text-align: center;
+    padding: 20px;
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -moz-box-shadow: 0 3px 6px #888;
+    -webkit-box-shadow: 0 3px 6px #888;
+    box-shadow: 0 3px 6px #888;
+}
+#photoDisplay{
+	width: 320px;
+	
+}
+#showPhoto:hover{
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+}
+.hide{display: none;}
