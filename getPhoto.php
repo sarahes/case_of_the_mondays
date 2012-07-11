@@ -1,34 +1,34 @@
 <?php    
-	include_once "api_key.php";
-	$photoId = $_GET['photoId'];     
+    include_once "api_key.php";
+    $photoId = $_GET['photoId'];     
        
     //url request stuff!
-	$url = "http://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
-	$url .= "&api_key=". $apiKey;
-	$url .= "&photo_id=". urlencode($photoId);	
-	$url .= "&format=rest";    
+    $url = "http://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
+    $url .= "&api_key=". $apiKey;
+    $url .= "&photo_id=". urlencode($photoId);	
+    $url .= "&format=rest";    
      
-	//initialize curl session
+    //initialize curl session
     $ch = curl_init();	
 
-	//set curl options
+    //set curl options
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_URL, $url);	
 
-	//get the response back for the request
+    //get the response back for the request
     $curlResponse = curl_exec($ch);
     
     curl_close($ch);    	
 
-	//make the curl response an xml object
+    //make the curl response an xml object
     $xmlObject = simplexml_load_string($curlResponse);   
     
     //print the xml for debugging
     print "<pre>".htmlentities($xmlObject->asXML())."</pre>";
     
-	foreach($xmlObject->photo as $photo){
-		$author = $photo->owner['username'];
+    foreach($xmlObject->photo as $photo){
+        $author = $photo->owner['username'];
         $title = $photo->title;
         $dateTaken = $photo->dates['taken'];	
         
@@ -36,11 +36,11 @@
         $date = date("l, F j Y", strtotime($dateTaken));
         
         //loop through the sizes to get the image url 
-		foreach($photo->sizes->size as $size){            
-			if($size['label'] == "Small 320"){	//lets go with the small image, so it doesnt't take up too much space 
-				$largeImg = $size['source'];
-			}
-		}        
+        foreach($photo->sizes->size as $size){            
+            if($size['label'] == "Small 320"){	//lets go with the small image, so it doesnt't take up too much space 
+                $largeImg = $size['source'];
+            }
+        }        
 
         print '<div id="photoDisplay">';
             print '<p><img src="'. $largeImg .'" alt="'.$title.'" />';
@@ -52,5 +52,5 @@
             print '<p>Taken by: '. $author .'</p>';
             print '<p>Date taken: '. $date .'</p>';
         print '</div>';                
-	}	
+    }	
 ?>

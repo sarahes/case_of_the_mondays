@@ -1,33 +1,33 @@
 <?php	
-	include_once "api_key.php";
+    include_once "api_key.php";
     $searchTerm = $_GET['searchTerm'];
-	
+    
     //url request stuff!
-	$url = "http://api.flickr.com/services/rest/?method=flickr.photos.search";
-	$url .= "&api_key=". $apiKey;
-	$url .= "&tags=". urlencode($searchTerm);
-	$url .= "&per_page=40";
+    $url = "http://api.flickr.com/services/rest/?method=flickr.photos.search";
+    $url .= "&api_key=". $apiKey;	
+    $url .= "&tags=". urlencode($searchTerm);
+    $url .= "&per_page=40";
     $url .= "&extras=date_taken";
-	$url .= "&format=rest"; 
-	
-	//initialize curl session
+    $url .= "&format=rest"; 
+    
+    //initialize curl session
     $ch = curl_init();	
-	
-	//set curl options
+    
+    //set curl options
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);    curl_setopt($ch, CURLOPT_URL, $url);
-	
-	//get the response back for the request
+    
+    //get the response back for the request
     $curlResponse = curl_exec($ch);
     curl_close($ch);    
-	
-	//make the curl response an xml object
+    
+    //make the curl response an xml object
     $xmlObject = simplexml_load_string($curlResponse);   
     
-	print '<ul>';      
-	//loop through the xml ojbect and parse the stuff needed for the image urls
-	foreach($xmlObject->photos->photo as $photo){            
-		$farmId = $photo['farm'];
+    print '<ul>';      
+    //loop through the xml ojbect and parse the stuff needed for the image urls
+    foreach($xmlObject->photos->photo as $photo){            
+        $farmId = $photo['farm'];
         $serverId = $photo['server'];
         $id = $photo['id'];
         $secret = $photo['secret'];
@@ -44,6 +44,6 @@
                 print '<img id="'.$id.'" class="thumb" src="http://farm'.$farmId.'.static.flickr.com/'.$serverId.'/'.$id.'_'.$secret.'_s.jpg" alt="'.$title.'" />';
             print '</li>';
         }
-	}
-	print '</ul>';
+    }
+    print '</ul>';
 ?>
