@@ -1,6 +1,6 @@
 <?php	
+	include_once "api_key.php";
     $searchTerm = $_GET['searchTerm'];
-	$apiKey = "1fae7abeb22ecc71ee56c6e2cdab2a93"; 
 	
     //url request stuff!
 	$url = "http://api.flickr.com/services/rest/?method=flickr.photos.search";

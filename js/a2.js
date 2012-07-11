@@ -1,7 +1,8 @@
 $(function() {
 	//html5 badge!
 	$("html").append('<div id="html5"><img src="img/html5.png" alt="HTML5" /></div>');
-	$('#searchSubmit').click(function(e) {                       e.preventDefault(); 
+	$('#searchSubmit').click(function(e) {                       
+		e.preventDefault(); 
 		var searchTerm = $('#searchTerm').val();
 		if (searchTerm){
 			//if the error message is displayed, hide it

@@ -1,6 +1,6 @@
 <?php    
-	$photoId = $_GET['photoId'];   
-    $apiKey = "1fae7abeb22ecc71ee56c6e2cdab2a93";    
+	include_once "api_key.php";
+	$photoId = $_GET['photoId'];     
        
     //url request stuff!
 	$url = "http://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
